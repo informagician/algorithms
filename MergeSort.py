@@ -31,3 +31,10 @@ def merge_sort(arr):
 
 
 print(merge_sort(a))
+
+
+# Running time: How many times you have to press enter in the debugger for algorithm to complete
+
+# pop() from end of list is O(1) but pop(n) due to shifting of all other items in O(n). So its better to use pointers.
+
+# MergeSort has upper bound of 6nlog(n) + 6n
