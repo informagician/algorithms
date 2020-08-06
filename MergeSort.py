@@ -1,6 +1,6 @@
-arr = [5,7,3,8,1,4,9,2,6]
+a = [5,7,3,8,1,4,9,2,6]
 
-def mergeSort(arr):
+def merge_sort(arr):
 
     if len(arr) > 1:
     
@@ -8,31 +8,26 @@ def mergeSort(arr):
         left = arr[:mid] # first half
         right = arr[mid:] # second half
 
-        mergeSort(left) # recursively sort the first half
-        mergeSort(right) # recursively sort the second half
+        left = merge_sort(left) # recursively sort the first half
+        right = merge_sort(right) # recursively sort the second half
 
-        # pointers
-        i = j = k = 0
 
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                arr[k] = left[i]
-                i += 1
+        arr = []
+
+        while len(left) > 0 and len(right) > 0:
+            if left[0] < right[0]:
+                val = left.pop(0)
+                arr.append(val)
             else:
-                arr.append(j)
-                j += 1
-            k += 1
-
-        while i < len(left): # check if anything is left in left
-            arr[k] = left[i]
-            i += 1
-            k += 1
-
-        while j < len(right): # check if anything is left in right
-            arr[k] = right[j]
-            j += 1
-            k += 1
+                val = right.pop(0)
+                arr.append(val)
+            
+        for i in left:
+            arr.append(i)
+        for i in right:
+            arr.append(i)
         
     return arr
 
-print(mergeSort(arr))
+
+print(merge_sort(a))
